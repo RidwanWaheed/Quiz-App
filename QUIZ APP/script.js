@@ -358,6 +358,10 @@ class App {
     this.#currentAccount = accounts.find(
       (acc) => acc.username === inputLoginUsername.value.toLowerCase()
     );
+    if (!this.#currentAccount) {
+      alert("Account does not exist. Please, enter correct details.");
+      return;
+    }
     //chech if input pin correlates with stored pin
     if (this.#currentAccount?.pin === Number(inputLoginPin.value)) {
       // Display UI and message
@@ -370,6 +374,7 @@ class App {
       inputLoginUsername.value = inputLoginPin.value = "";
       inputLoginPin.blur();
     }
+    //else if()
     //store user's name on result
     this.#result.name = this.#currentAccount.owner;
   }
