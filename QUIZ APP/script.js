@@ -356,7 +356,7 @@ class App {
     e.preventDefault();
     //check if input username exist in accounts
     this.#currentAccount = accounts.find(
-      (acc) => acc.username === inputLoginUsername.value
+      (acc) => acc.username === inputLoginUsername.value.toLowerCase()
     );
     //chech if input pin correlates with stored pin
     if (this.#currentAccount?.pin === Number(inputLoginPin.value)) {
