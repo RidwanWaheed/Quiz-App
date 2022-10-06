@@ -342,11 +342,7 @@ class App {
   //create username from each account
   createUsernames() {
     accounts.forEach(function (acc) {
-      acc.username = acc.owner
-        .toLowerCase()
-        .split(" ")
-        .map((name) => name[0])
-        .join("");
+      acc.username = acc.owner.toLowerCase();
     });
   }
 
@@ -359,7 +355,7 @@ class App {
       (acc) => acc.username === inputLoginUsername.value.toLowerCase()
     );
     if (!this.#currentAccount) {
-      alert("Account does not exist. Please, enter correct details.");
+      alert("Account does not exist. Please enter correct details.");
       return;
     }
     //chech if input pin correlates with stored pin
@@ -373,8 +369,9 @@ class App {
       //set loign field back to empty text
       inputLoginUsername.value = inputLoginPin.value = "";
       inputLoginPin.blur();
+    } else {
+      return alert("The password you entered is incorrect. Please try again.");
     }
-    //else if()
     //store user's name on result
     this.#result.name = this.#currentAccount.owner;
   }
